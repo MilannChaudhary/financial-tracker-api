@@ -6,8 +6,12 @@ const router = express.Router();
 router.post("/signup", async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    const newuser = await User.create({ name, email, password });
-    res.status(201).json({ status: "success", message: "User created", user: newuser });
+    const newUser = await User.create({ name, email, password });
+    res.status(201).json({
+      status: "success",
+      message: "User created",
+      user: { _id: newUser._id, name: newUser.name, email: newUser.email },
+    });
   } catch (error) {
     res.status(500).json({ status: "error", message: error.message });
   }
