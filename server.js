@@ -1,8 +1,10 @@
+import "dotenv/config";
 import express from "express";
 import { connectMongoDb } from "./src/config/dbconfig.js";
 import transactionRouter from "./src/routers/transactionRouter.js";
 import authRouter from "./src/routers/authRouter.js";
 import cors from "cors";
+import "dotenv/config";
 
 const app = express();
 const PORT = 8000;
